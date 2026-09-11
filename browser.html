@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>&#9825; Haze &#9825;</title>
+  <link rel="icon" href="assets/icon.png" type="image/svg+xml">
+  <meta name="title" content="Homepage">
+  <meta property="og:title" content="Homepage">
+  <meta property="og:description" content="Empower learning with Instructure’s LMS and edtech solutions for K–12, higher education, and businesses. Discover Canvas, Impact, and Mastery to drive success.">
+  <meta property="og:site_name" content="Instructure">
+  <meta property="og:image:height" content="200">
+  <meta property="og:image" content="https://www.instructure.com/sites/default/files/image/2025-07/2025-Meta-OG-thumb-ENG_0.jpg">
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    :root { --bgDark: #0b0716; --bgPanel: rgba(42, 32, 68, 0.8); --tabActive: #2a2044; --tabInactive: #1a1525; --iconBg: transparent; --textMain: #f1f1f6; --textMuted: #a0a5c0; --accentPurple: #a084f0; --border: rgba(168, 148, 255, 0.22); --radiussm: 8px; }    body, html { margin: 0; padding: 0; height: 100vh; width: 100vw; overflow: hidden; background-color: var(--bgDark); display: flex; flex-direction: column; color: var(--textMain); font-family: var(--fontBody); }
+    .browserTabBar { display: flex; align-items: flex-end; background: var(--bgDark); padding: 8px 8px 0; gap: 6px; height: 44px; border-bottom: 1px solid var(--border); box-sizing: border-box; }
+    .browserTab { display: flex; align-items: center; justify-content: space-between; background: var(--tabInactive); border: 1px solid transparent; border-bottom: none; border-radius: 8px 8px 0 0; padding: 6px 12px; gap: 10px; width: 190px; height: 36px; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
+    .browserTab:hover { background: rgba(42, 32, 68, 0.4); }
+    .browserTab.active { background: var(--tabActive); border-color: var(--border); }
+    .tabLeft { display: flex; align-items: center; gap: 8px; overflow: hidden; flex: 1; }
+    .tabIconWrapper { display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; flex-shrink: 0; }
+    .tabFavicon { width: 16px; height: 16px; display: flex; justify-content: center; align-items: center; }
+    .tabFavicon img { width: 100%; height: 100%; border-radius: 2px; }
+    .tabTitle { font-family: var(--fontMono); font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; user-select: none; color: var(--textMain); }
+    .tabClose { background: transparent; border: none; color: var(--textMuted); cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; padding: 2px; border-radius: 4px; transition: color 0.2s ease; }
+    .tabClose:hover { background: transparent; color: #ff6b6b; }
+    .addTabButton { background: transparent; border: none; color: var(--textMuted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 8px; height: 36px; margin-bottom: 0px; transition: color 0.2s ease; }
+    .addTabButton:hover { color: var(--accentPurple); }
+    .addTabButton svg { width: 20px; height: 20px; }
+    .browserTopBar { background: var(--bgPanel); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 8px 16px; gap: 12px; z-index: 100; }
+    .browserBrand { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radiussm); transition: background 0.2s ease; flex-shrink: 0; }
+    .browserBrand:hover { background: rgba(160, 132, 240, 0.14); }
+    .browserBrand img { width: 24px; height: 24px; }
+    .browserButton { background: transparent; border: none; color: var(--textMuted); width: 36px; height: 36px; border-radius: var(--radiussm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; }
+    .browserButton:hover { background: rgba(160, 132, 240, 0.14); color: var(--accentPurple); }
+    .browserButton svg { width: 20px; height: 20px; fill: currentColor; }
+    .addressBarContainer { flex: 1; display: flex; align-items: center; background: rgba(11, 7, 22, 0.6); border: 1px solid var(--border); border-radius: 20px; padding: 0 16px; transition: border-color 0.2s ease; height: 38px; }
+    .addressBarContainer:focus-within { border-color: var(--accentPurple); }
+    .searchIcon { color: var(--textMuted); margin-right: 10px; flex-shrink: 0; }
+    .browserAddressBar { flex: 1; background: transparent; border: none; color: var(--textMain); font-family: var(--fontMono); font-size: 0.95rem; outline: none; height: 100%; padding: 0; }
+    .browserFrameContainer { flex: 1; width: 100%; height: 100%; background: #ffffff; position: relative; }
+    .browserFrameContainer iframe { width: 100%; height: 100%; border: none; display: none; position: absolute; inset: 0; }
+    .browserFrameContainer iframe.active { display: block; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(160, 132, 240, 0.2); border-top-color: var(--accentPurple); border-radius: 50%; animation: spin 0.8s linear infinite; box-sizing: border-box; flex-shrink: 0; }
+    .historyPanel { position: fixed; right: 0; top: 0; bottom: 0; width: 350px; background: var(--bgPanel); backdrop-filter: blur(16px); border-left: 1px solid var(--border); z-index: 1000; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); display: flex; flex-direction: column; }    .historyPanel.open { transform: translateX(0); }
+    .historyHeader { display: flex; justify-content: space-between; align-items: center; padding: 20px; font-family: var(--fontHeading); font-size: 1.2rem; border-bottom: 1px solid var(--border); }
+    .historyHeaderLeft { display: flex; align-items: center; gap: 10px; }
+    .historyHeaderLeft svg { width: 22px; height: 22px; fill: var(--textMain); }
+    .historyClose { background: none; border: none; color: var(--textMuted); cursor: pointer; font-size: 18px; transition: color 0.2s ease; }
+    .historyClose:hover { color: #fff; }
+    .historyControls { padding: 15px 20px; display: flex; gap: 10px; align-items: center; }
+    .historySearch { flex: 1; background: rgba(11, 7, 22, 0.6); border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; color: var(--textMain); font-family: var(--fontMono); font-size: 0.85rem; outline: none; }
+    .historySearch:focus { border-color: var(--accentPurple); }
+    .clearHistoryButton { background: transparent; border: none; color: var(--textMuted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 6px; transition: all 0.2s ease; }
+    .clearHistoryButton:hover { color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+    .clearHistoryButton svg { width: 18px; height: 18px; }
+    .historyList { flex: 1; overflow-y: auto; padding: 0 20px 20px; }
+    .historyGroup { font-family: var(--fontMono); font-size: 0.75rem; text-transform: uppercase; color: var(--accentPurple); margin: 15px 0 10px; letter-spacing: 1px; }
+    .historyItem { display: flex; align-items: center; padding: 10px 0; gap: 12px; cursor: pointer; border-radius: 8px; transition: background 0.2s ease; margin-left: -10px; margin-right: -10px; padding-left: 10px; padding-right: 10px; }
+    .historyItem:hover { background: rgba(160, 132, 240, 0.08); }
+    .historyItem:hover .historyItemTitle { color: var(--accentPurpleLight); }
+    .historyItemFavicon { width: 28px; height: 28px; background: rgba(11, 7, 22, 0.6); border-radius: 6px; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
+    .historyItemFavicon img { width: 16px; height: 16px; border-radius: 2px; }
+    .historyItemDetails { flex: 1; overflow: hidden; }
+    .historyItemTitle { font-family: var(--fontMono); font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; transition: color 0.2s ease; }
+    .historyItemUrl { font-family: var(--fontMono); font-size: 0.75rem; color: var(--textMuted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #buttonDuplicate svg, #buttonHistory svg { width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+  <div class="browserTabBar" id="tabBar">
+    <button class="addTabButton" id="buttonAddTab" title="New Tab">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+  </div>
+
+  <div class="browserTopBar">
+    <a href="index.html" class="browserBrand">
+      <img src="assets/icon.png" alt="Haze">
+    </a>
+    <button class="browserButton" id="buttonBack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+    <button class="browserButton" id="buttonForward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button>
+    <button class="browserButton" id="buttonReload"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
+    
+    <div class="addressBarContainer">
+      <svg class="searchIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" class="browserAddressBar" id="addressBar" spellcheck="false" autocomplete="off" placeholder="Search or enter URL...">
+    </div>    
+    
+    <button class="browserButton" id="buttonDuplicate" title="Duplicate Tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+    <button class="browserButton" id="buttonHistory" title="History"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></button>
+  </div>
+
+  <div class="browserFrameContainer" id="framesContainer"></div>
+
+  <div class="historyPanel" id="historyPanel">
+    <div class="historyHeader">
+      <div class="historyHeaderLeft">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        History
+      </div>
+      <button class="historyClose" id="closeHistory">✕</button>
+    </div>
+    <div class="historyControls">
+      <input type="text" class="historySearch" id="historySearch" placeholder="Search History...">
+      <button class="clearHistoryButton" id="buttonClearHistory" title="Clear History">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+      </button>
+    </div>
+    <div class="historyList" id="historyList"></div>
+  </div>
+
+  <div id="privacyOverlay" style="display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; background: #000 url('assets/canvas.png') no-repeat center center / 100% 100%; z-index: 999999;"></div>
+
+  <script src="app/scramjet.js"></script>
+  <script src="controller/controller.api.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@3.0.1/dist/index.js"></script>
+  <script src="js/browser.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
