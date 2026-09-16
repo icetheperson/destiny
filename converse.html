@@ -315,19 +315,20 @@
       cursor: default;
     }
     
-    .msgUsername.rainbow,
-    .msgReplyAuthor.rainbow {
-      background: linear-gradient(90deg,
-      #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b
-      );
-      background-size: 200% auto;
+    .msgUsername.ani,
+    .msgReplyAuthor.ani {
+      background: linear-gradient(270deg, #88d094, #4f9f9a, #1c77a4);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbowShift 3s linear infinite;
+      animation: rainbowShift 3s ease infinite;
     }
+    
     @keyframes rainbowShift {
-      to { background-position: 200% center; }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     
     .msgBannedTag {
