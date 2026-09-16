@@ -803,7 +803,7 @@ function subscribeRealtime() {
             const usernameSpan = authoredEl.querySelector('.msgUsername');
             if (usernameSpan) {
               usernameSpan.textContent = 'Deleted User';
-              usernameSpan.classList.remove('rainbow');
+              usernameSpan.classList.remove('ani');
               usernameSpan.style.color = DELETED_USER_COLOR;
             }
             authoredEl.dataset.userId = '';
@@ -940,7 +940,7 @@ function renderMessage(msg, bannedIds = new Set()) {
   row.dataset.userId = msg.user_id;
 
   const usernameSpan = document.createElement('span');
-  usernameSpan.className = 'msgUsername' + (isAdmin ? ' rainbow' : '');
+  usernameSpan.className = 'msgUsername' + (isAdmin ? ' ani' : '');
   if (!isAdmin) usernameSpan.style.color = color;
   usernameSpan.textContent = username;
 
@@ -1034,7 +1034,7 @@ function renderMessage(msg, bannedIds = new Set()) {
     });
     const rmIsAdmin = !rmDeletedUser && !!rm.profiles?.is_admin;
     const rmAuthorSpan = Object.assign(document.createElement('span'), {
-      className: 'msgReplyAuthor' + (rmIsAdmin ? ' rainbow' : ''), textContent: rmAuthor,
+      className: 'msgReplyAuthor' + (rmIsAdmin ? ' ani' : ''), textContent: rmAuthor,
     });
     if (!rm.is_deleted && !rmIsAdmin) {
       rmAuthorSpan.style.color = rmDeletedUser ? DELETED_USER_COLOR : (rm.profiles?.color ?? '#968cff');
