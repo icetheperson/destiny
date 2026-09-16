@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let activeTabId = null;
   let tabIdCounter = 0;
   let scramjetInstance = null;
-  let globalHistory = JSON.parse(localStorage.getItem("hazeHistory") || "[]");
+  let globalHistory = JSON.parse(localStorage.getItem("destinyHistory") || "[]");
   
   const searchString = typeof window.__HAZE_SEARCH__ !== "undefined" ? window.__HAZE_SEARCH__ : window.location.search;
   const urlParams = new URLSearchParams(searchString);
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const entry = { url, title: title || url, time: Date.now() };
     globalHistory.unshift(entry);
     if (globalHistory.length > 100) globalHistory.pop();
-    localStorage.setItem("hazeHistory", JSON.stringify(globalHistory));
+    localStorage.setItem("destinyHistory", JSON.stringify(globalHistory));
     renderHistory();
   }
   
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("closeHistory").addEventListener("click", () => historyPanel.classList.remove("open"));
   document.getElementById("buttonClearHistory").addEventListener("click", () => {
     globalHistory = [];
-    localStorage.removeItem("hazeHistory");
+    localStorage.removeItem("destinyHistory");
     renderHistory();
   });
   document.getElementById("historySearch").addEventListener("input", () => {

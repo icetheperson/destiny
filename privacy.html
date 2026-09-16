@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>&#9825; Haze &#9825;</title>
+  <title>&#9825; Destiny &#9825;</title>
   <link rel="icon" href="assets/icon.png" type="image/svg+xml">
   <meta name="title" content="Homepage">
   <meta property="og:title" content="Homepage">
@@ -14,33 +14,37 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#88d094"/>
+        <stop offset="100%" stop-color="#1c77a4"/>
+      </linearGradient>
+    </defs>
+  </svg>
 
   <div id="appLoadingOverlay">
     <span id="loadingSpinner" class="spinner spinner-lg spinner-hidden"></span>
   </div>
 
-  <div id="vantaBg"></div>
-
   <header class="nav-header">
     <div class="brand">
-      <img src="assets/icon.png" class="brand">
-      <span>Haze</span>
+
+      <span>Destiny</span>
     </div>
     <ul class="navLinks">
-      <li><a href="index.html"><svg style="width: 1em; height: 1em; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>
-      <li><a href="arcade.html"><svg style="width: 1em; height: 1em; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M448 128C554 128 640 214 640 320C640 426 554 512 448 512L192 512C86 512 0 426 0 320C0 214 86 128 192 128L448 128zM192 240C178.7 240 168 250.7 168 264L168 296L136 296C122.7 296 112 306.7 112 320C112 333.3 122.7 344 136 344L168 344L168 376C168 389.3 178.7 400 192 400C205.3 400 216 389.3 216 376L216 344L248 344C261.3 344 272 333.3 272 320C272 306.7 261.3 296 248 296L216 296L216 264C216 250.7 205.3 240 192 240zM432 336C414.3 336 400 350.3 400 368C400 385.7 414.3 400 432 400C449.7 400 464 385.7 464 368C464 350.3 449.7 336 432 336zM496 240C478.3 240 464 254.3 464 272C464 289.7 478.3 304 496 304C513.7 304 528 289.7 528 272C528 254.3 513.7 240 496 240z"/></svg> <span class="navLabel">Arcade</span></a></li>
-      <li><a href="converse.html"><svg style="width: 1em; height: 1em; fill: currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M576 304C576 436.5 461.4 544 320 544C282.9 544 247.7 536.6 215.9 523.3L97.5 574.1C88.1 578.1 77.3 575.8 70.4 568.3C63.5 560.8 62 549.8 66.8 540.8L115.6 448.6C83.2 408.3 64 358.3 64 304C64 171.5 178.6 64 320 64C461.4 64 576 171.5 576 304z"/></svg> <span class="navLabel">Converse</span></a></li>
-      <li><a href="terms.html"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"/></svg> <span class="navLabel">Terms</span></a></li>
-      <li><a href="privacy.html" class="active"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 64C324.6 64 329.2 65 333.4 66.9L521.8 146.8C543.8 156.1 560.2 177.8 560.1 204C559.6 303.2 518.8 484.7 346.5 567.2C329.8 575.2 310.4 575.2 293.7 567.2C121.3 484.7 80.6 303.2 80.1 204C80 177.8 96.4 156.1 118.4 146.8L306.7 66.9C310.9 65 315.4 64 320 64zM320 130.8L320 508.9C458 442.1 495.1 294.1 496 205.5L320 130.9L320 130.9z"/></svg> <span class="navLabel">Privacy</span></a></li>
-    </ul>
-  </header>
+      <li><a href="index.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>
+      <li><a href="arcade.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M448 128C554 128 640 214 640 320C640 426 554 512 448 512L192 512C86 512 0 426 0 320C0 214 86 128 192 128L448 128zM192 240C178.7 240 168 250.7 168 264L168 296L136 296C122.7 296 112 306.7 112 320C112 333.3 122.7 344 136 344L168 344L168 376C168 389.3 178.7 400 192 400C205.3 400 216 389.3 216 376L216 344L248 344C261.3 344 272 333.3 272 320C272 306.7 261.3 296 248 296L216 296L216 264C216 250.7 205.3 240 192 240zM432 336C414.3 336 400 350.3 400 368C400 385.7 414.3 400 432 400C449.7 400 464 385.7 464 368C464 350.3 449.7 336 432 336zM496 240C478.3 240 464 254.3 464 272C464 289.7 478.3 304 496 304C513.7 304 528 289.7 528 272C528 254.3 513.7 240 496 240z"/></svg> <span class="navLabel">Arcade</span></a></li>
+      <li><a href="converse.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M576 304C576 436.5 461.4 544 320 544C282.9 544 247.7 536.6 215.9 523.3L97.5 574.1C88.1 578.1 77.3 575.8 70.4 568.3C63.5 560.8 62 549.8 66.8 540.8L115.6 448.6C83.2 408.3 64 358.3 64 304C64 171.5 178.6 64 320 64C461.4 64 576 171.5 576 304z"/></svg> <span class="navLabel">Converse</span></a></li>
+      <li><a href="settings.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"/></svg> <span class="navLabel">Settings</span></a></li>
+    </header>
 
   <div class="main">
     <div class="pageHeading">Privacy Policy</div>
 
     <div class="legalContent">
       <div class="legalUpdated">Last updated: September 6, 2026</div>
-      <p>This Privacy Policy explains how Haze ("we," "us," or "the Site") collects, uses, and protects information when you use this website. By using Haze, you agree to the practices described below.</p>
+      <p>This Privacy Policy explains how Destiny ("we," "us," or "the Site") collects, uses, and protects information when you use this website. By using Destiny, you agree to the practices described below.</p>
 
       <h2>Information We Collect</h2>
       <p>We aim to collect as little personal information as possible. Depending on which features you use, the following may be collected:</p>
@@ -63,7 +67,7 @@
       <p>We do not sell your personal information to third parties.</p>
 
       <h2>Third-Party Services</h2>
-      <p>Haze relies on third-party providers to operate certain features, including:</p>
+      <p>Destiny relies on third-party providers to operate certain features, including:</p>
       <ul>
         <li><strong>Supabase</strong> - used for account authentication and storing Converse data.</li>
         <li><strong>LuminSDK</strong> - used to source and display arcade in the Arcade section.</li>
@@ -79,7 +83,7 @@
       <p>To prevent someone from deleting a suspended or banned account and immediately recreating it to evade enforcement, we retain a limited identifier associated with that account (such as an email address, or a linked Google/Discord account identifier) indefinitely, solely to block that identifier from creating a new account. No other account or message data is kept for this purpose.</p>
 
       <h2>Children's Privacy</h2>
-      <p>Haze is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so it can be removed.</p>
+      <p>Destiny is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so it can be removed.</p>
 
       <h2>Your Rights</h2>
       <p>Depending on your location, you may have rights to access, correct, or delete your personal data. Account deletion is available directly in the Converse side settings; for anything else, contact us using the information below.</p>
@@ -92,14 +96,16 @@
     </div>
   </div>
 
+  <div class="footer">
+    <a href="terms.html">Terms</a>
+    <span class="separator">&bull;</span>
+    <a href="privacy.html">Privacy</a>
+    <span class="separator">&bull;</span>
+    <a href="credits.html">Credits</a>
+  </div>
   <div id="privacyOverlay" style="display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; background: #000 url('assets/canvas.png') no-repeat center center / 100% 100%; z-index: 999999;"></div>
-  <footer>
-    Haze &bull; Made with &#9825; by icey
-  </footer>
+
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-<script src="js/vantabg.js"></script>
 <script src="js/main.js"></script>
 </html>

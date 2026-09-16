@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>&#9825; Haze &#9825;</title>
+  <title>&#9825; Destiny &#9825;</title>
   <link rel="icon" href="assets/icon.png" type="image/svg+xml">
   <meta name="title" content="Homepage">
   <meta property="og:title" content="Homepage">
@@ -24,7 +23,7 @@
       display: flex;
       flex-direction: column;
     }
-
+    
     .conversePageTitle {
       font-family: var(--fontHeading);
       font-size: 2.8rem;
@@ -33,10 +32,10 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-
+    
     .view { display: none; }
     .view.active { display: block; }
-
+    
     #viewSignin.active,
     #viewSetup.active,
     #viewBanned.active,
@@ -48,20 +47,20 @@
       justify-content: center;
       margin: auto 0;
     }
-
+    
     .converseCard {
       background: var(--bgPanel);
       border: 1px solid var(--border);
       border-radius: var(--radiuslg);
       padding: 32px;
     }
-
+    
     .converseCardTitle {
       font-family: var(--fontHeading);
       font-size: 1.4rem;
       margin-bottom: 8px;
     }
-
+    
     .converseCardSub {
       font-family: var(--fontMono);
       font-size: 0.82rem;
@@ -69,14 +68,14 @@
       margin-bottom: 24px;
       line-height: 1.6;
     }
-
+    
     .signinButtons {
       display: flex;
       flex-direction: column;
       gap: 10px;
       max-width: 320px;
     }
-
+    
     .signinButton {
       font-family: var(--fontMono);
       font-size: 0.88rem;
@@ -94,16 +93,18 @@
       width: 100%;
     }
     .signinButton:hover {
-      border-color: var(--accentPurple);
-      background: var(--bgPanelHover);
-      color: var(--accentPurpleLight);
+      border-color: var(--accentBlend);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .signinButton svg {
       width: 18px;
       height: 18px;
       flex-shrink: 0;
     }
-
+    
     .setupField {
       display: flex;
       flex-direction: column;
@@ -111,7 +112,7 @@
       margin-bottom: 16px;
       max-width: 360px;
     }
-
+    
     .setupLabel {
       font-family: var(--fontMono);
       font-size: 0.75rem;
@@ -119,11 +120,11 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
+    
     .setupInputWrap {
       position: relative;
     }
-
+    
     .setupInput {
       width: 100%;
       padding: 10px 40px 10px 14px;
@@ -137,9 +138,10 @@
       outline: none;
     }
     .setupInput:focus {
-      border-color: var(--accentPurple);
+      border-color: var(--accentBlend);
+      box-shadow: 0 0 0 3px rgba(136, 208, 148, 0.08), 0 0 12px rgba(28, 119, 164, 0.25);
     }
-
+    
     .inputStatus {
       position: absolute;
       right: 12px;
@@ -151,27 +153,27 @@
     .inputStatus.ok  { color: #70e099; }
     .inputStatus.err { color: #e07070; }
     .inputStatus.checking { color: var(--textMuted); }
-
+    
     .setupError {
       font-family: var(--fontMono);
       font-size: 0.78rem;
       color: #e07070;
       min-height: 1em;
     }
-
+    
     .colorPalette {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 20px;
     }
-
+    
     .colorPickerWrap {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
+    
     .colorPickerInput {
       width: 44px;
       height: 44px;
@@ -183,11 +185,11 @@
       transition: border-color 0.15s;
     }
     .colorPickerInput:hover,
-    .colorPickerInput:focus { border-color: var(--accentPurple); }
+    .colorPickerInput:focus { border-color: var(--accentBlend); }
     .colorPickerInput::-webkit-color-swatch-wrapper { padding: 3px; }
     .colorPickerInput::-webkit-color-swatch { border: none; border-radius: 4px; }
     .colorPickerInput::-moz-color-swatch { border: none; border-radius: 4px; }
-
+    
     .colorPickerHex {
       font-family: var(--fontMono);
       font-size: 0.85rem;
@@ -195,14 +197,14 @@
       text-transform: uppercase;
       letter-spacing: 0.03em;
     }
-
+    
     .bannedCard {
       border-color: rgba(224, 112, 112, 0.35);
       background: rgba(224, 112, 112, 0.05);
     }
-
+    
     .bannedCard .converseCardTitle { color: #e07070; }
-
+    
     .bannedDetail {
       font-family: var(--fontMono);
       font-size: 0.88rem;
@@ -213,7 +215,7 @@
     .bannedDetail span {
       color: var(--textMain);
     }
-
+    
     .converseLayout {
       display: grid;
       grid-template-columns: 1fr 260px;
@@ -221,12 +223,12 @@
       align-items: start;
       margin-bottom: 24px;
     }
-
+    
     @media (max-width: 700px) {
       .converseLayout { grid-template-columns: 1fr; }
       .converseSidebar { order: -1; }
     }
-
+    
     .conversePane {
       background: var(--bgPanel);
       backdrop-filter: blur(14px);
@@ -237,11 +239,11 @@
       height: calc(100svh - 260px);
       min-height: 380px;
     }
-
+    
     body.converseAdminMode .conversePane {
       height: 560px;
     }
-
+    
     .conversePaneHeader {
       padding: 14px 18px;
       border-bottom: 1px solid var(--border);
@@ -252,12 +254,12 @@
       align-items: center;
       justify-content: space-between;
     }
-
+    
     #connectionNotice {
       font-size: 0.72rem;
       color: #d5e070;
     }
-
+    
     .converseMessages {
       flex: 1;
       overflow-y: auto;
@@ -269,12 +271,12 @@
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
     }
-
+    
     .converseMessages::-webkit-scrollbar { width: 5px; }
     .converseMessages::-webkit-scrollbar-track { background: transparent; }
     .converseMessages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; transition: background 0.2s ease; }
-    .converseMessages::-webkit-scrollbar-thumb:hover { background: var(--accentPurple); }
-
+    .converseMessages::-webkit-scrollbar-thumb:hover { background: var(--accentGradient); }
+    
     .converseSystemMsg {
       font-family: var(--fontMono);
       font-size: 0.75rem;
@@ -283,7 +285,7 @@
       padding: 4px 0;
       user-select: none;
     }
-
+    
     .msg {
       font-family: var(--fontMono);
       font-size: 0.88rem;
@@ -293,7 +295,7 @@
       gap: 0;
       word-break: break-word;
     }
-
+    
     .msgMeta {
       flex-shrink: 0;
       display: flex;
@@ -301,22 +303,22 @@
       gap: 5px;
       margin-right: 6px;
     }
-
+    
     .msgTime {
       font-size: 0.72rem;
       color: var(--textMuted);
       flex-shrink: 0;
     }
-
+    
     .msgUsername {
       font-weight: bold;
       cursor: default;
     }
-
+    
     .msgUsername.rainbow,
     .msgReplyAuthor.rainbow {
       background: linear-gradient(90deg,
-        #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b
+      #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b
       );
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -327,7 +329,7 @@
     @keyframes rainbowShift {
       to { background-position: 200% center; }
     }
-
+    
     .msgBannedTag {
       font-size: 0.68rem;
       color: #e07070;
@@ -338,21 +340,24 @@
       vertical-align: middle;
       white-space: nowrap;
     }
-
+    
     .msgPrivateTag {
       font-size: 0.68rem;
-      color: var(--accentPurpleLight);
-      border: 1px solid rgba(160,132,240,0.35);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border: 1px solid rgba(28,119,164,0.35);
       border-radius: 3px;
       padding: 0px 4px;
       margin-right: 2px;
       white-space: nowrap;
     }
-
+    
     .msgColon { color: var(--textMuted); margin-right: 5px; }
-
+    
     .msgContent { color: var(--textMain); flex: 1; }
-
+    
     .msgActionButton {
       background: none;
       border: none;
@@ -368,17 +373,17 @@
     }
     .msg:hover .msgActionButton,
     .msgActionButton:focus-visible { opacity: 1; }
-
+    
     .msgReplyButton:hover {
-      background: rgba(160, 132, 240, 0.14);
-      color: var(--accentPurpleLight);
+      background: linear-gradient(135deg, rgba(136, 208, 148, 0.14), rgba(28, 119, 164, 0.14));
+      color: var(--accentBlend);
     }
-
+    
     .msgDeleteButton:hover {
       background: rgba(224, 112, 112, 0.14);
       color: #e07070;
     }
-
+    
     .msgHardDeleteButton {
       color: #e07070;
       opacity: 0.35;
@@ -391,7 +396,7 @@
       opacity: 0.25;
       cursor: default;
     }
-
+    
     .msgDeleted { opacity: 0.55; }
     .msgDeletedTag {
       font-family: var(--fontMono);
@@ -399,13 +404,13 @@
       font-style: italic;
       color: var(--textMuted);
     }
-
+    
     .msgWrapper {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
-
+    
     .msgReplyPreview {
       font-family: var(--fontMono);
       font-size: 0.75rem;
@@ -427,16 +432,16 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
+    
     .msgHighlight {
       animation: msgHighlightFlash 1.2s ease;
       border-radius: 4px;
     }
     @keyframes msgHighlightFlash {
-      0%   { background: rgba(160, 132, 240, 0.22); }
+      0%   { background: rgba(28, 119, 164, 0.22); }
       100% { background: transparent; }
     }
-
+    
     .converseInputRow {
       padding: 12px 14px;
       border-top: 1px solid var(--border);
@@ -444,13 +449,13 @@
       flex-direction: column;
       gap: 8px;
     }
-
+    
     .converseInputMain {
       display: flex;
       gap: 8px;
       align-items: center;
     }
-
+    
     .converseTextInput {
       flex: 1;
       padding: 9px 14px;
@@ -463,33 +468,43 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .converseTextInput:focus { border-color: var(--accentPurple); }
+    .converseTextInput:focus { border-color: var(--accentBlend); box-shadow: 0 0 0 3px rgba(136, 208, 148, 0.08), 0 0 12px rgba(28, 119, 164, 0.25); }
     .converseTextInput:disabled { opacity: 0.4; cursor: not-allowed; }
     .converseTextInput::placeholder { color: var(--textMuted); }
-
+    
     .converseSendButton {
       padding: 9px 16px;
-      background: var(--accentPurple);
-      border: none;
-      border-radius: var(--radiussm);
-      color: var(--bgDark);
       font-family: var(--fontMono);
       font-size: 0.88rem;
       font-weight: 600;
+      border-radius: var(--radiussm);
       cursor: pointer;
-      transition: background 0.2s;
       white-space: nowrap;
+      transition: all 0.2s;
+      background: transparent;
+      border: 1px solid var(--accentBlend);
+      color: var(--accentBlend);
     }
-    .converseSendButton:hover:not(:disabled) { background: var(--accentPurpleLight); }
-    .converseSendButton:disabled { opacity: 0.4; cursor: not-allowed; }
-
+    
+    .converseSendButton:hover:not(:disabled) {
+      background: linear-gradient(135deg, rgba(136, 208, 148, 0.2), rgba(28, 119, 164, 0.2));
+      border-color: var(--accentBlend);
+      color: var(--accentBlend);
+      box-shadow: 0 0 12px rgba(28, 119, 164, 0.2); 
+    }
+    
+    .converseSendButton:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
     .converseInputFooter {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
     }
-
+    
     .privateWrap {
       display: flex;
       align-items: center;
@@ -515,11 +530,11 @@
       transition: background 0.15s, border-color 0.15s;
     }
     .privateWrap > input[type="checkbox"]:hover {
-      border-color: var(--accentPurple);
+      border-color: var(--accentBlend);
     }
     .privateWrap > input[type="checkbox"]:checked {
-      background: var(--accentPurple);
-      border-color: var(--accentPurple);
+      background: var(--accentGradient);
+      border-color: var(--accentBlend);
     }
     .privateWrap > input[type="checkbox"]:checked::after {
       content: '';
@@ -532,20 +547,20 @@
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
-
+    
     .charCounter {
       font-family: var(--fontMono);
       font-size: 0.72rem;
       color: var(--textMuted);
     }
-
+    
     #converseInputError {
       font-family: var(--fontMono);
       font-size: 0.75rem;
       color: #e07070;
       display: none;
     }
-
+    
     #privatePanel {
       display: none;
     }
@@ -557,40 +572,47 @@
       flex: 1;
       width: auto;
     }
-
+    
     .privateInput {
       width: 100%;
       padding: 7px 12px;
       background: var(--bgDark);
-      border: 1px solid rgba(160,132,240,0.3);
+      border: 1px solid rgba(28,119,164,0.3);
       border-radius: var(--radiussm);
       color: var(--textMain);
       font-family: var(--fontMono);
       font-size: 0.8rem;
       outline: none;
     }
-    .privateInput:focus { border-color: var(--accentPurple); }
+    .privateInput:focus { border-color: var(--accentBlend); }
     .privateInput::placeholder { color: var(--textMuted); }
-
+    
     .privateAddButton {
       flex-shrink: 0;
       padding: 7px 14px;
-      background: rgba(160,132,240,0.14);
-      border: 1px solid rgba(160,132,240,0.35);
-      border-radius: var(--radiussm);
-      color: var(--accentPurpleLight);
       font-family: var(--fontMono);
       font-size: 0.8rem;
+      border-radius: var(--radiussm);
       cursor: pointer;
-      transition: background 0.15s;
+      transition: all 0.15s;
+      background: transparent;
+      border: 1px solid rgba(28, 119, 164, 0.35);
+      color: var(--accentBlend);
     }
-    .privateAddButton:hover { background: rgba(160,132,240,0.24); }
+    
+    .privateAddButton:hover {
+      border-color: var(--accentBlend);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     #privateError {
       font-family: var(--fontMono);
       font-size: 0.72rem;
       color: #e07070;
     }
-
+    
     .privateChips {
       display: flex;
       flex-wrap: wrap;
@@ -602,17 +624,17 @@
       align-items: center;
       gap: 5px;
       padding: 3px 4px 3px 9px;
-      background: rgba(160, 132, 240, 0.12);
-      border: 1px solid rgba(160, 132, 240, 0.3);
+      background: linear-gradient(135deg, rgba(136, 208, 148, 0.12), rgba(28, 119, 164, 0.12));
+      border: 1px solid rgba(28, 119, 164, 0.3);
       border-radius: 999px;
       font-family: var(--fontMono);
       font-size: 0.75rem;
-      color: var(--accentPurpleLight);
+      color: var(--accentBlend);
     }
     .privateChipRemove {
       background: none;
       border: none;
-      color: var(--accentPurpleLight);
+      color: var(--accentBlend);
       cursor: pointer;
       font-size: 0.85rem;
       line-height: 1;
@@ -620,14 +642,14 @@
       border-radius: 50%;
       transition: background 0.15s;
     }
-    .privateChipRemove:hover { background: rgba(160, 132, 240, 0.25); }
-
+    .privateChipRemove:hover { background: rgba(28, 119, 164, 0.25); }
+    
     .converseSidebar {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-
+    
     .sidebarCard {
       background: var(--bgPanel);
       backdrop-filter: blur(14px);
@@ -635,22 +657,25 @@
       border-radius: var(--radiuslg);
       padding: 18px;
     }
-
+    
     .sidebarTitle {
       font-family: var(--fontMono);
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--accentPurple);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
     }
-
+    
     .sidebarUsername {
       font-family: var(--fontMono);
       font-size: 0.9rem;
       margin-bottom: 12px;
     }
-
+    
     .changeUsernameWarning {
       font-family: var(--fontMono);
       font-size: 0.72rem;
@@ -662,7 +687,7 @@
       margin-bottom: 10px;
       display: none;
     }
-
+    
     .sidebarInput {
       width: 100%;
       padding: 8px 10px;
@@ -676,8 +701,8 @@
       margin-bottom: 6px;
       transition: border-color 0.2s;
     }
-    .sidebarInput:focus { border-color: var(--accentPurple); }
-
+    .sidebarInput:focus { border-color: var(--accentBlend); }
+    
     .sidebarButton {
       font-family: var(--fontMono);
       font-size: 0.78rem;
@@ -692,11 +717,14 @@
       margin-top: 2px;
     }
     .sidebarButton:hover:not(:disabled) {
-      border-color: var(--accentPurple);
-      color: var(--accentPurpleLight);
+      border-color: var(--accentBlend);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .sidebarButton:disabled { opacity: 0.4; cursor: not-allowed; }
-
+    
     .sidebarError {
       font-family: var(--fontMono);
       font-size: 0.72rem;
@@ -704,25 +732,25 @@
       min-height: 1em;
       margin-top: 4px;
     }
-
+    
     .sidebarCooldown {
       font-family: var(--fontMono);
       font-size: 0.75rem;
       color: var(--textMuted);
       display: none;
     }
-
+    
     .sidebarColorPalette {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
+    
     .sidebarColorPalette .colorPickerInput {
       width: 34px;
       height: 34px;
     }
-
+    
     .sidebarSignoutButton {
       font-family: var(--fontMono);
       font-size: 0.75rem;
@@ -739,7 +767,7 @@
       background: rgba(224,112,112,0.08);
       border-color: rgba(224,112,112,0.6);
     }
-
+    
     .sidebarDangerButton {
       font-family: var(--fontMono);
       font-size: 0.72rem;
@@ -756,7 +784,7 @@
     .sidebarDangerButton:hover {
       background: rgba(224,112,112,0.22);
     }
-
+    
     #viewPendingDeletion.active {
       display: flex;
       position: absolute;
@@ -764,7 +792,7 @@
       align-items: center;
       justify-content: center;
     }
-
+    
     .confirmModal {
       display: none;
       position: fixed;
@@ -775,7 +803,7 @@
       justify-content: center;
     }
     .confirmModal.active { display: flex; }
-
+    
     .confirmModalCard {
       width: 100%;
       max-width: 420px;
@@ -785,7 +813,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
     }
-
+    
     .confirmModalActions {
       display: flex;
       flex-direction: column;
@@ -796,9 +824,9 @@
       width: 100%;
       justify-content: center;
     }
-
+    
     #adminPanel { display: none; }
-
+    
     .adminPanelWrap {
       margin-top: 16px;
       margin-bottom: 32px;
@@ -808,7 +836,7 @@
       border-radius: var(--radiuslg);
       padding: 16px 18px;
     }
-
+    
     .adminPanelHeader {
       font-family: var(--fontHeading);
       font-size: 1rem;
@@ -817,7 +845,7 @@
       margin-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
-
+    
     .adminPanelGrid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -826,9 +854,9 @@
     @media (max-width: 700px) {
       .adminPanelGrid { grid-template-columns: 1fr; gap: 16px; }
     }
-
+    
     .adminPanelCol { min-width: 0; }
-
+    
     .adminSectionTitle {
       font-family: var(--fontMono);
       font-size: 0.68rem;
@@ -837,13 +865,13 @@
       color: #e07070;
       margin-bottom: 8px;
     }
-
+    
     .adminBanSearch {
       display: flex;
       gap: 6px;
       margin-bottom: 6px;
     }
-
+    
     .adminInput {
       flex: 1;
       padding: 6px 9px;
@@ -858,14 +886,14 @@
     }
     .adminInput:focus { border-color: #e07070; }
     .adminInput::placeholder { color: var(--textMuted); }
-
+    
     #adminSearchResults {
       margin-bottom: 6px;
       display: flex;
       flex-direction: column;
       gap: 3px;
     }
-
+    
     .adminUserRow {
       display: flex;
       align-items: center;
@@ -887,9 +915,9 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-
+    
     #adminBanForm { display: none; flex-direction: column; gap: 5px; }
-
+    
     .adminBanTarget {
       font-family: var(--fontMono);
       font-size: 0.74rem;
@@ -897,7 +925,7 @@
       margin-bottom: 2px;
     }
     .adminBanTarget span { color: var(--textMain); }
-
+    
     .adminPermRow {
       display: flex;
       align-items: center;
@@ -910,9 +938,9 @@
       accent-color: #e07070;
       cursor: pointer;
     }
-
+    
     .adminFormActions { display: flex; gap: 6px; }
-
+    
     .adminButton {
       font-family: var(--fontMono);
       font-size: 0.72rem;
@@ -934,13 +962,13 @@
       color: var(--textMuted);
     }
     .adminButtonCancel:hover { border-color: var(--textMuted); color: var(--textMain); }
-
+    
     #adminBanError {
       font-family: var(--fontMono);
       font-size: 0.68rem;
       color: #e07070;
     }
-
+    
     #adminBansList {
       display: flex;
       flex-direction: column;
@@ -950,7 +978,7 @@
     }
     #adminBansList::-webkit-scrollbar { width: 3px; }
     #adminBansList::-webkit-scrollbar-thumb { background: var(--border); }
-
+    
     .banRow {
       display: flex;
       align-items: center;
@@ -964,7 +992,7 @@
     .banRowInfo { flex: 1; min-width: 0; }
     .banRowUser { color: var(--textMain); }
     .banRowDetail { color: var(--textMuted); font-size: 0.66rem; }
-
+    
     .adminUnbanButton {
       font-family: var(--fontMono);
       font-size: 0.68rem;
@@ -978,7 +1006,7 @@
       transition: all 0.15s;
     }
     .adminUnbanButton:hover { background: rgba(112,224,153,0.1); }
-
+    
     #tosOverlay {
       display: none;
       position: fixed;
@@ -990,7 +1018,7 @@
       justify-content: center;
     }
     #tosOverlay.active { display: flex; }
-
+    
     .tosBox {
       background: var(--bgPanel);
       backdrop-filter: blur(16px);
@@ -1000,7 +1028,7 @@
       max-width: 480px;
       overflow: hidden;
     }
-
+    
     .tosHeader {
       padding: 20px 24px 14px;
       border-bottom: 1px solid var(--border);
@@ -1015,7 +1043,7 @@
       font-size: 0.75rem;
       color: var(--textMuted);
     }
-
+    
     #tosBody {
       max-height: 200px;
       overflow-y: auto;
@@ -1027,18 +1055,21 @@
     }
     #tosBody::-webkit-scrollbar { width: 3px; }
     #tosBody::-webkit-scrollbar-thumb { background: var(--border); }
-
+    
     #tosBody h4 {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--accentPurple);
+      background: var(--accentGradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin: 14px 0 6px;
     }
     #tosBody h4:first-child { margin-top: 0; }
     #tosBody ul { margin-left: 14px; padding: 0; }
     #tosBody li { margin-bottom: 4px; }
-
+    
     .tosOwnerNote {
       margin-top: 12px;
       padding: 8px 12px;
@@ -1047,7 +1078,7 @@
       font-size: 0.78rem;
       line-height: 1.55;
     }
-
+    
     .tosScrollHint {
       text-align: center;
       font-family: var(--fontMono);
@@ -1057,7 +1088,7 @@
       font-style: italic;
       opacity: 0.6;
     }
-
+    
     .tosAgreeRow {
       display: flex;
       align-items: center;
@@ -1069,12 +1100,12 @@
       color: var(--textMuted);
     }
     .tosAgreeRow input[type="checkbox"] {
-      accent-color: var(--accentPurple);
+      accent-color: var(--accentBlend);
       width: 14px; height: 14px;
       cursor: pointer;
     }
     .tosAgreeRow input:disabled { opacity: 0.3; cursor: default; }
-
+    
     .tosFooter {
       display: flex;
       align-items: center;
@@ -1087,41 +1118,47 @@
   </style>
 </head>
 <body>
-
+  
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#88d094"/>
+        <stop offset="100%" stop-color="#1c77a4"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  
   <div id="appLoadingOverlay">
     <span id="loadingSpinner" class="spinner spinner-lg spinner-hidden"></span>
   </div>
-
-  <div id="vantaBg"></div>
-
+  
   <header class="navHeader">
     <div class="brand">
-      <img src="assets/icon.png" class="brand">
-      <span>Haze</span>
+      
+      <span>Destiny</span>
     </div>
     <ul class="navLinks">
-      <li><a href="index.html"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>
-      <li><a href="arcade.html"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M448 128C554 128 640 214 640 320C640 426 554 512 448 512L192 512C86 512 0 426 0 320C0 214 86 128 192 128L448 128zM192 240C178.7 240 168 250.7 168 264L168 296L136 296C122.7 296 112 306.7 112 320C112 333.3 122.7 344 136 344L168 344L168 376C168 389.3 178.7 400 192 400C205.3 400 216 389.3 216 376L216 344L248 344C261.3 344 272 333.3 272 320C272 306.7 261.3 296 248 296L216 296L216 264C216 250.7 205.3 240 192 240zM432 336C414.3 336 400 350.3 400 368C400 385.7 414.3 400 432 400C449.7 400 464 385.7 464 368C464 350.3 449.7 336 432 336zM496 240C478.3 240 464 254.3 464 272C464 289.7 478.3 304 496 304C513.7 304 528 289.7 528 272C528 254.3 513.7 240 496 240z"/></svg> <span class="navLabel">Arcade</span></a></li>
-      <li><a href="converse.html" class="active"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M576 304C576 436.5 461.4 544 320 544C282.9 544 247.7 536.6 215.9 523.3L97.5 574.1C88.1 578.1 77.3 575.8 70.4 568.3C63.5 560.8 62 549.8 66.8 540.8L115.6 448.6C83.2 408.3 64 358.3 64 304C64 171.5 178.6 64 320 64C461.4 64 576 171.5 576 304z"/></svg> <span class="navLabel">Converse</span></a></li>
-      <li><a href="terms.html"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"/></svg> <span class="navLabel">Terms</span></a></li>
-      <li><a href="privacy.html"><svg style="width:1em;height:1em;fill:currentColor;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 64C324.6 64 329.2 65 333.4 66.9L521.8 146.8C543.8 156.1 560.2 177.8 560.1 204C559.6 303.2 518.8 484.7 346.5 567.2C329.8 575.2 310.4 575.2 293.7 567.2C121.3 484.7 80.6 303.2 80.1 204C80 177.8 96.4 156.1 118.4 146.8L306.7 66.9C310.9 65 315.4 64 320 64zM320 130.8L320 508.9C458 442.1 495.1 294.1 496 205.5L320 130.9L320 130.9z"/></svg> <span class="navLabel">Privacy</span></a></li>
+      <li><a href="index.html"><svg style="width:1em;height:1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>
+      <li><a href="arcade.html"><svg style="width:1em;height:1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M448 128C554 128 640 214 640 320C640 426 554 512 448 512L192 512C86 512 0 426 0 320C0 214 86 128 192 128L448 128zM192 240C178.7 240 168 250.7 168 264L168 296L136 296C122.7 296 112 306.7 112 320C112 333.3 122.7 344 136 344L168 344L168 376C168 389.3 178.7 400 192 400C205.3 400 216 389.3 216 376L216 344L248 344C261.3 344 272 333.3 272 320C272 306.7 261.3 296 248 296L216 296L216 264C216 250.7 205.3 240 192 240zM432 336C414.3 336 400 350.3 400 368C400 385.7 414.3 400 432 400C449.7 400 464 385.7 464 368C464 350.3 449.7 336 432 336zM496 240C478.3 240 464 254.3 464 272C464 289.7 478.3 304 496 304C513.7 304 528 289.7 528 272C528 254.3 513.7 240 496 240z"/></svg> <span class="navLabel">Arcade</span></a></li>
+      <li><a href="converse.html" class="active"><svg style="width:1em;height:1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M576 304C576 436.5 461.4 544 320 544C282.9 544 247.7 536.6 215.9 523.3L97.5 574.1C88.1 578.1 77.3 575.8 70.4 568.3C63.5 560.8 62 549.8 66.8 540.8L115.6 448.6C83.2 408.3 64 358.3 64 304C64 171.5 178.6 64 320 64C461.4 64 576 171.5 576 304z"/></svg> <span class="navLabel">Converse</span></a></li>
+      <li><a href="settings.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"/></svg> <span class="navLabel">Settings</span></a></li>
     </ul>
   </header>
-
+  
   <div class="converseMain">
     <h1 class="conversePageTitle">Converse</h1>
-
+    
     <div id="viewLoading" class="view active">
       <div class="loadingState">
         <span class="spinner spinner-lg"></span>
       </div>
     </div>
-
+    
     <div id="viewSignin" class="view">
       <div class="converseCard" style="max-width:420px;">
         <div class="converseCardTitle">Sign in to Converse</div>
         <div class="converseCardSub">
-          Choose a provider to continue. A Haze account is created automatically on first sign in.
+          Choose a provider to continue. A Destiny account is created automatically on first sign in.
         </div>
         <div class="signinButtons">
           <button class="signinButton" id="ButtonGoogle">
@@ -1140,21 +1177,21 @@
             Continue with Discord
           </button>
         </div>
-
+        
         <button type="button" id="togglePasskeySigninButton" class="passkeySigninToggle">
           Have a passkey? Sign in with it instead
         </button>
-
+        
         <div id="passkeySigninForm" class="passkeySigninForm" style="display:none;">
           <div class="setupField">
             <span class="setupLabel">Email</span>
             <input type="email" id="passkeyLoginEmail" class="setupInput"
-                   placeholder="you@example.com" autocomplete="email" spellcheck="false" />
+            placeholder="you@example.com" autocomplete="email" spellcheck="false" />
           </div>
           <div class="setupField">
             <span class="setupLabel">Passkey</span>
             <input type="password" id="passkeyLoginToken" class="setupInput"
-                   placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" />
+            placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" />
           </div>
           <div id="passkeyLoginError" class="setupError"></div>
           <button id="passkeyLoginSubmitButton" class="button buttonPrimary" style="width:100%;">
@@ -1163,33 +1200,33 @@
         </div>
       </div>
     </div>
-
+    
     <div id="viewSetup" class="view">
       <div class="converseCard" style="max-width:420px;">
         <div class="converseCardTitle">Set up your Account</div>
         <div class="converseCardSub">Pick a Username and a Color before entering the converse.</div>
-
+        
         <div class="setupField">
           <span class="setupLabel">Username</span>
           <div class="setupInputWrap">
             <input type="text" id="setupUsernameInput" class="setupInput"
-                   placeholder="your_name" maxlength="20" autocomplete="off" spellcheck="false" />
+            placeholder="your_name" maxlength="20" autocomplete="off" spellcheck="false" />
             <span id="setupUsernameStatus" class="inputStatus"></span>
           </div>
           <div id="setupUsernameError" class="setupError"></div>
         </div>
-
+        
         <div class="setupField">
           <span class="setupLabel">Color</span>
           <div id="setupColorPalette" class="colorPalette"></div>
         </div>
-
+        
         <button id="setupSubmitButton" class="button buttonPrimary" disabled>
           Join converse
         </button>
       </div>
     </div>
-
+    
     <div id="viewBanned" class="view">
       <div class="converseCard bannedCard" style="max-width:480px;">
         <div class="converseCardTitle">Account Suspended</div>
@@ -1198,11 +1235,11 @@
           <div id="banExpiryWrap">Duration: <span id="banExpiryText">-</span></div>
         </div>
         <p style="font-family:var(--fontMono);font-size:0.75rem;color:var(--textMuted);margin-top:20px;">
-          You may still use the rest of Haze while suspended from the Converse.
+          You may still use the rest of Destiny while suspended from the Converse.
         </p>
       </div>
     </div>
-
+    
     <div id="viewPendingDeletion" class="view">
       <div class="converseCard" style="max-width:480px;">
         <div class="converseCardTitle">Account Scheduled for Deletion</div>
@@ -1211,41 +1248,41 @@
           <strong id="deletionDateText" style="color:var(--textMain);">-</strong>.
           Your past Converse messages will remain, shown as sent by "Deleted User".
         </div>
-        <div id="deletionCountdownText" style="font-family:var(--fontMono);font-size:0.8rem;color:var(--accentPurpleLight);margin-bottom:20px;"></div>
+        <div id="deletionCountdownText" style="font-family:var(--fontMono);font-size:0.8rem;background:var(--accentGradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;"></div>
         <button id="cancelDeletionButton" class="button buttonPrimary" style="width:100%;">
           Cancel Deletion
         </button>
       </div>
     </div>
-
+    
     <div id="viewConverse" class="view">
       <div class="converseLayout">
-
+        
         <div class="conversePane">
           <div class="conversePaneHeader">
             <span>Converse</span>
             <span id="connectionNotice"></span>
           </div>
-
+          
           <div id="converseMessages" class="converseMessages">
             <div class="loadingState loadingInline">
               <span class="spinner spinner-sm"></span>
               <span>Loading messages</span>
             </div>
           </div>
-
+          
           <div class="converseInputRow">
             <div id="replyBar" style="display:none;font-family:var(--fontMono);font-size:0.75rem;color:var(--textMuted);display:none;align-items:center;gap:8px;">
               <span>Replying to <span id="replyBarName" style="color:var(--textMain)"></span></span>
               <button id="replyCancelButton" style="background:none;border:none;color:var(--textMuted);cursor:pointer;font-family:var(--fontMono);font-size:0.8rem;">&times;</button>
             </div>
-
+            
             <div class="converseInputMain">
               <input type="text" id="converseInput" class="converseTextInput"
-                     placeholder="Message..." maxlength="2000" autocomplete="off" />
+              placeholder="Message..." maxlength="2000" autocomplete="off" />
               <button id="converseSendButton" class="converseSendButton">Send</button>
             </div>
-
+            
             <div class="converseInputFooter">
               <label class="privateWrap">
                 <span class="switch">
@@ -1257,11 +1294,11 @@
               <span id="converseInputError"></span>
               <span id="charCounter" class="charCounter">0/2000</span>
             </div>
-
+            
             <div id="privatePanel">
               <div class="privateAddRow">
                 <input type="text" id="privateRecipients" class="privateInput"
-                       placeholder="Add a username..." autocomplete="off" spellcheck="false" />
+                placeholder="Add a username..." autocomplete="off" spellcheck="false" />
                 <button type="button" id="privateAddButton" class="privateAddButton">Add</button>
               </div>
               <div id="privateRecipientsChips" class="privateChips"></div>
@@ -1269,33 +1306,33 @@
             </div>
           </div>
         </div>
-
+        
         <div class="converseSidebar">
-
+          
           <div class="sidebarCard">
             <div class="sidebarTitle">Username</div>
             <div class="sidebarUsername" id="sidebarUsernameDisplay">-</div>
-
+            
             <div class="changeUsernameWarning" id="usernameWarning">
               You can only change your username once every 90 days.
             </div>
-
+            
             <input type="text" id="changeUsernameInput" class="sidebarInput"
-                   placeholder="New username" maxlength="20" autocomplete="off" spellcheck="false"
-                   style="display:none;" />
+            placeholder="New username" maxlength="20" autocomplete="off" spellcheck="false"
+            style="display:none;" />
             <div id="changeUsernameStatus" style="font-family:var(--fontMono);font-size:0.72rem;margin-bottom:4px;"></div>
             <div id="changeUsernameError" class="sidebarError"></div>
-
+            
             <button id="toggleChangeUsernameButton" class="sidebarButton">Change Username</button>
             <button id="confirmChangeUsernameButton" class="sidebarButton" style="display:none;" disabled>Confirm</button>
             <div id="sidebarCooldown" class="sidebarCooldown"></div>
           </div>
-
+          
           <div class="sidebarCard">
             <div class="sidebarTitle">Name Color</div>
             <div id="sidebarColorPalette" class="sidebarColorPalette"></div>
           </div>
-
+          
           <div class="sidebarCard">
             <div class="sidebarTitle">Passkey Login</div>
             <div class="sidebarSub">
@@ -1314,27 +1351,27 @@
               Reset Passkey
             </button>
           </div>
-
+          
           <div class="sidebarCard">
             <button id="signoutButton" class="sidebarSignoutButton">Sign Out</button>
             <button id="deleteAccountButton" class="sidebarDangerButton">Delete Account</button>
           </div>
-
+          
         </div>
       </div>
-
+      
       <div class="adminPanelWrap" id="adminPanel">
         <div class="adminPanelHeader">Moderation</div>
         <div class="adminPanelGrid">
-
+          
           <div class="adminPanelCol">
-            <div class="adminSectionTitle">Ban User</div>
+            <div class="adminSectionTitle">Punish User</div>
             <div class="adminBanSearch">
               <input type="text" id="adminSearchInput" class="adminInput" placeholder="Search username..." />
             </div>
             <div id="adminSearchResults"></div>
             <div id="adminBanForm">
-              <div class="adminBanTarget">Banning: <span id="adminBanTargetName"></span></div>
+              <div class="adminBanTarget">Punishing: <span id="adminBanTargetName"></span></div>
               <input type="text" id="adminBanReason" class="adminInput" placeholder="Reason" />
               <input type="number" id="adminBanDays" class="adminInput" placeholder="Days" min="1" />
               <div class="adminPermRow">
@@ -1342,31 +1379,31 @@
                 <label for="adminBanPerm">Permanent</label>
               </div>
               <div class="adminFormActions">
-                <button id="adminBanSubmitButton" class="adminButton adminButtonDanger">Ban</button>
+                <button id="adminBanSubmitButton" class="adminButton adminButtonDanger">Punish</button>
                 <button id="adminBanCancelButton" class="adminButton adminButtonCancel">Cancel</button>
               </div>
               <div id="adminBanError"></div>
             </div>
           </div>
-
+          
           <div class="adminPanelCol">
             <div class="adminSectionTitle">Active Bans</div>
             <div id="adminBansList"></div>
           </div>
-
+          
         </div>
       </div>
     </div>
-
+    
   </div>
-
+  
   <div id="tosOverlay">
     <div class="tosBox">
       <div class="tosHeader">
         <h2>Converse Rules</h2>
         <p>Read before joining. Scroll to unlock the checkbox.</p>
       </div>
-
+      
       <div id="tosBody">
         <h4>Community Rules</h4>
         <ul>
@@ -1381,7 +1418,7 @@
         <h4>Enforcement</h4>
         <ul>
           <li>Violations may result in a temporary or permanent ban.</li>
-          <li>Banned accounts can still use Haze but cannot send messages.</li>
+          <li>Banned accounts can still use Destiny but cannot send messages.</li>
           <li>Bans are at the Developer's discretion.</li>
         </ul>
         <h4>Private Messages</h4>
@@ -1393,14 +1430,14 @@
           The site Developer can view all messages, including private ones, for moderation and safety. By agreeing, you consent to this.
         </div>
       </div>
-
+      
       <p class="tosScrollHint">↓ Scroll to the bottom to unlock</p>
-
+      
       <div class="tosAgreeRow">
         <input type="checkbox" id="tosCheckbox" disabled />
         <label for="tosCheckbox">I have read and agree to the rules above.</label>
       </div>
-
+      
       <div class="tosFooter">
         <span id="tosError"></span>
         <button id="tosAcceptButton" class="button buttonPrimary" style="font-size:0.85rem;padding:9px 18px;" disabled>
@@ -1409,12 +1446,17 @@
       </div>
     </div>
   </div>
-
+  
+  <div class="footer">
+    <a href="terms.html">Terms</a>
+    <span class="separator">&bull;</span>
+    <a href="privacy.html">Privacy</a>
+    <span class="separator">&bull;</span>
+    <a href="credits.html">Credits</a>
+  </div>
   <div id="privacyOverlay" style="display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; background: #000 url('assets/canvas.png') no-repeat center center / 100% 100%; z-index: 999999;"></div>
-  <footer>
-    Haze &bull; Made with &#9825; by icey
-  </footer>
-
+  
+  
   <div id="deleteAccountModal" class="confirmModal">
     <div class="confirmModalCard">
       <div class="converseCardTitle">Delete Your Account?</div>
@@ -1429,7 +1471,7 @@
       </div>
     </div>
   </div>
-
+  
   <div id="passkeyTokenModal" class="passkeyTokenModal">
     <div class="passkeyTokenModalCard">
       <div class="converseCardTitle">Your Passkey</div>
@@ -1446,12 +1488,9 @@
       </button>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-  <script src="js/vantabg.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/c.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
