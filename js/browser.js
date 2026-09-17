@@ -234,7 +234,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     await navigator.serviceWorker.register("service.js");
     const serviceworker = navigator.serviceWorker.controller ?? (await navigator.serviceWorker.ready).active;
     
-    const transport = new EpoxyTransport({ wisp: "wss://arctic.lat/_q/" });
+    const savedWispUrl = localStorage.getItem("destiny_wispUrl") || "wss://arctic.lat/_q/";
+    const transport = new EpoxyTransport({ wisp: savedWispUrl });
     await transport.init();
     
     scramjetInstance = new Controller({ serviceworker, transport, scramjetConfig: defaultConfig });

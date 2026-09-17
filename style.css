@@ -1019,3 +1019,10 @@ input:checked + .slider:before {
   word-break: break-all;
   user-select: all;
 }
+
+.saveUrlButton {
+    text-align: center;
+    justify-content: center;
+    padding: 8px 16px;
+    width: auto;
+}

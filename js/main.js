@@ -108,9 +108,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   
   const supabaseBadge = document.getElementById("supabase-status");
+  const supabasePing = document.getElementById("supabase-ping");
   if (supabaseBadge) {
     const SUPABASE_URL = "https://cgbsuudnsjegwsvferbe.supabase.co";
     const SUPABASE_ANON = "sb_publishable_U-vwBs44tiha3_w-gi6sQg_6qwxH8XS";
+    const startTime = performance.now();
+    
     fetch(`${SUPABASE_URL}/auth/v1/health`, {
       method: "GET",
       headers: { apikey: SUPABASE_ANON },
@@ -118,31 +121,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .then((res) => {
       if (res.ok) {
+        if (supabasePing) supabasePing.textContent = `${Math.round(performance.now() - startTime)}ms`;
         supabaseBadge.textContent = "Online";
         supabaseBadge.className = "badge badge-online";
       } else {
+        if (supabasePing) supabasePing.textContent = "-";
         supabaseBadge.textContent = "Offline";
         supabaseBadge.className = "badge badge-offline";
       }
     })
     .catch(() => {
+      if (supabasePing) supabasePing.textContent = "-";
       supabaseBadge.textContent = "Offline";
       supabaseBadge.className = "badge badge-offline";
     });
   }
   
   const scramjetBadge = document.getElementById("scramjet-status");
+  const scramjetPing = document.getElementById("scramjet-ping");
   if (scramjetBadge) {
-    const wispUrl = "wss://arctic.lat/_q/";
+    const wispUrl = localStorage.getItem("destiny_wispUrl") || "wss://arctic.lat/_q/";
     try {
+      const startTime = performance.now();
       const ws = new WebSocket(wispUrl);
+      
       const timeout = setTimeout(() => {
         ws.close();
+        if (scramjetPing) scramjetPing.textContent = "-";
         scramjetBadge.textContent = "Offline";
         scramjetBadge.className = "badge badge-offline";
       }, 5000);
       
       ws.onopen = () => {
+        if (scramjetPing) scramjetPing.textContent = `${Math.round(performance.now() - startTime)}ms`;
         clearTimeout(timeout);
         ws.close();
         scramjetBadge.textContent = "Online";
@@ -150,11 +161,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
       
       ws.onerror = () => {
+        if (scramjetPing) scramjetPing.textContent = "-";
         clearTimeout(timeout);
         scramjetBadge.textContent = "Offline";
         scramjetBadge.className = "badge badge-offline";
       };
     } catch (err) {
+      if (scramjetPing) scramjetPing.textContent = "-";
       scramjetBadge.textContent = "Offline";
       scramjetBadge.className = "badge badge-offline";
     }
@@ -641,6 +654,21 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         window.removeEventListener('beforeunload', handleBeforeUnload);
       }
+    });
+  }
+  
+  const wispUrlInput = document.getElementById("wispUrlInput");
+  const saveWispButton = document.getElementById("saveWispButton");
+  
+  if (wispUrlInput) {
+    wispUrlInput.value = localStorage.getItem("destiny_wispUrl") || "wss://arctic.lat/_q/";
+  }
+  
+  if (saveWispButton && wispUrlInput) {
+    saveWispButton.addEventListener("click", () => {
+      const newUrl = wispUrlInput.value.trim() || "wss://arctic.lat/_q/";
+      localStorage.setItem("destiny_wispUrl", newUrl);
+      window.location.reload();
     });
   }
   

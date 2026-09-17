@@ -45,13 +45,14 @@
     <section class="pageHeading" style="margin-bottom: 40px; text-align: center;">
       <h1>Settings & Metrics</h1>
     </section>
-
+    
     <section class="tableContainer">
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Ping (ms)</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -59,16 +60,19 @@
           <tr>
             <td style="font-family: var(--fontMono);">Scramjet v2</td>
             <td>Relay Engine</td>
+            <td id="scramjet-ping">-</td>
             <td><span id="scramjet-status" class="badge">Loading...</span></td>
           </tr>
           <tr>
             <td style="font-family: var(--fontMono);">Supabase</td>
             <td>Converse & User Database</td>
+            <td id="supabase-ping">-</td>
             <td><span id="supabase-status" class="badge">Loading...</span></td>
           </tr>
           <tr>
             <td style="font-family: var(--fontMono);">LuminSDK</td>
             <td>Arcade SDK</td>
+            <td>-</td>
             <td><span id="luminsdk-status" class="badge">Loading...</span></td>
           </tr>
         </tbody>
@@ -111,6 +115,16 @@
           <input type="checkbox" id="leaveConfirmToggle">
           <span class="slider"></span>
         </label>
+      </div>
+      <hr style="border: 0; border-top: 1px solid rgba(157, 161, 188, 0.1); width: 100%;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <h3 style="color: #f1f1f6; font-size: 1.1rem; font-weight: normal;">Custom Wisp URL</h3>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input type="text" id="wispUrlInput" placeholder="wss://arctic.lat/_q/" style="padding: 8px 12px; background: rgba(23, 26, 45, 0.95); color: #f1f1f6; border: 1px solid rgba(157, 161, 188, 0.2); border-radius: 5px; outline: none; width: 220px;">
+          <button id="saveWispButton" class="button buttonPrimary saveUrlButton">Save</button>
+        </div>
       </div>
     </section>
   </div>
