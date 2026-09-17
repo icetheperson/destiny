@@ -7,6 +7,12 @@ import { ScramjetConfig } from "@/types";
 import { type CookieSyncEntry, type CookieSyncOptions, TrackedHistoryState } from "@/fetch";
 import { AnyFunction } from "@/types";
 import { _URL } from "@/shared/snapshot";
+type IfEquals<T, U, Y = unknown, N = never> = (<G>() => G extends T ? 1 : 2) extends <G>() => G extends U ? 1 : 2 ? Y : N;
+type Traverse<O extends Record<any, any>, P extends string> = P extends `${infer K}.${infer R}` ? Traverse<O[K], R> : O[P];
+type GlobalTraverse<P extends string> = Traverse<GlobalThis & Record<string, any>, P>;
+type ProxyApplyThis<T extends string> = unknown extends ThisParameterType<Extract<GlobalTraverse<T>, AnyFunction>> ? T extends `${infer ClassName}.prototype.${string}` ? GlobalTraverse<ClassName> extends {
+    prototype: infer Proto;
+} ? Proto : unknown : unknown : ThisParameterType<Extract<GlobalTraverse<T>, AnyFunction>>;
 export type ScramjetClientInit = {
     context: ScramjetContext;
     transport: ProxyTransport;
@@ -18,25 +24,13 @@ export type ScramjetClientInit = {
 };
 type NativeStore = {
     store: Record<string, any>;
-    call: (target: string, that: any, ...args: any[]) => any;
-    construct: (target: string, ...args: any[]) => any;
+    construct: <T extends string>(target: T, ...args: ConstructorParameters<GlobalTraverse<T>>) => InstanceType<GlobalTraverse<T>>;
+    call: <T extends string>(target: T, that: ProxyApplyThis<T>, ...args: Parameters<GlobalTraverse<T>>) => ReturnType<GlobalTraverse<T>>;
 };
 type DescriptorStore = {
     store: Record<string, PropertyDescriptor>;
-    get: (target: string, that: any) => any;
-    set: (target: string, that: any, value: any) => void;
-};
-type Traverse<O extends Record<any, any>, P extends string> = P extends `${infer K}.${infer R}` ? Traverse<O[K], R> : O[P];
-type GlobalTraverse<P extends string> = Traverse<GlobalThis & Record<string, any>, P>;
-type IfEquals<T, U, Y = unknown, N = never> = (<G>() => G extends T ? 1 : 2) extends <G>() => G extends U ? 1 : 2 ? Y : N;
-type ProxyApplyThis<T extends string> = unknown extends ThisParameterType<Extract<GlobalTraverse<T>, AnyFunction>> ? T extends `${infer ClassName}.prototype.${string}` ? GlobalTraverse<ClassName> extends {
-    prototype: infer Proto;
-} ? Proto : unknown : unknown : ThisParameterType<Extract<GlobalTraverse<T>, AnyFunction>>;
-export type ScramjetModule = {
-    enabled: (client: ScramjetClient) => boolean | undefined;
-    disabled: (client: ScramjetClient, self: GlobalThis) => void | undefined;
-    order: number | undefined;
-    default: (client: ScramjetClient, self: GlobalThis) => void;
+    get: <T extends string>(target: T, that: any) => GlobalTraverse<T>;
+    set: <T extends string>(target: T, that: any, value: GlobalTraverse<T>) => void;
 };
 export type ProxyCtx<T extends string = string, U extends "construct" | "apply" = "apply"> = {
     fn: GlobalTraverse<T>;
@@ -63,10 +57,17 @@ export type Trap<T extends string> = {
     get?: (ctx: TrapCtx<T>) => GlobalTraverse<T>;
     set?: (ctx: TrapCtx<T>, v: GlobalTraverse<T>) => void;
 };
+export type ScramjetModule = {
+    enabled: (client: ScramjetClient) => boolean | undefined;
+    disabled: (client: ScramjetClient, self: GlobalThis) => void | undefined;
+    order: number | undefined;
+    default: (client: ScramjetClient, self: GlobalThis) => void;
+};
 export declare class ScramjetClient {
     global: GlobalThis;
     init: ScramjetClientInit;
     locationProxy: any;
+    indirectEval: any;
     serviceWorker: ServiceWorkerContainer;
     bare: BareCompatibleClient;
     natives: NativeStore;

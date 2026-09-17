@@ -31,7 +31,7 @@ export declare class Plugin {
     tap<T extends Description>(hook: T, callback: Callback<T>, order?: TapOrder): void;
 }
 export declare class Tap {
-    static dispatch<T extends Description>(hook: T, context: T["context"], props: T["props"]): Promise<void[]>;
+    static dispatch<T extends Description>(hook: T, context: T["context"], props: T["props"]): Promise<void[]> | null;
     static tap<T extends Description>(hook: T, callback: Callback<T>, plugin?: Plugin, order?: TapOrder): void;
     static create<T extends Record<string, Description>>(): TapInstance<T>;
     static getTappers<T extends Description>(hook: T): Plugin[];

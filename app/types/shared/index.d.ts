@@ -1,4 +1,4 @@
-import { ScramjetConfig, ScramjetFlags, ScramjetVersionInfo } from "@/types";
+import { ScramjetConfig, ScramjetFlags } from "@/types";
 import DomHandler, { Element } from "domhandler";
 import { URLMeta } from "@rewriters/url";
 import { CookieJar } from "./cookie";
@@ -27,7 +27,6 @@ export type ScramjetContext = {
         };
     };
 };
-export declare const versionInfo: ScramjetVersionInfo;
 export type HtmlRewriterHooks = {
     pre: {
         context: {

@@ -43,9 +43,9 @@ export interface ScramjetConfig {
         templocid: string;
         tempunusedid: string;
     };
-    maskedfiles: string[];
     flags: ScramjetFlags;
     siteFlags: Record<string, Partial<ScramjetFlags>>;
+    maskedfiles: string[];
 }
 /**
  * The config for Scramjet initialization.
@@ -56,13 +56,5 @@ export interface ScramjetInitConfig extends Omit<ScramjetConfig, "codec" | "flag
         encode: (url: string) => string;
         decode: (url: string) => string;
     };
-}
-declare global {
-    interface Window {
-        WASM: string;
-        REAL_WASM: Uint8Array;
-    }
-    interface HTMLDocument {
-    }
 }
 export type AnyFunction = Function;

@@ -1,6 +1,7 @@
 export declare const String: StringConstructor;
 export declare const String_fromCodePoint: (...codePoints: number[]) => string;
 export declare const String_fromCharCode: (...codes: number[]) => string;
+export declare const String_startsWith: (str: string, searchString: string, position?: number) => boolean;
 export declare const Number: NumberConstructor;
 export declare const Number_parseInt: (string: string, radix?: number) => number;
 export declare const Number_isSafeInteger: (number: unknown) => boolean;
