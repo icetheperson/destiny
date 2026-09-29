@@ -139,7 +139,6 @@
     }
     .setupInput:focus {
       border-color: var(--accentBlend);
-      box-shadow: 0 0 0 3px rgba(136, 208, 148, 0.08), 0 0 12px rgba(28, 119, 164, 0.25);
     }
     
     .inputStatus {
@@ -317,7 +316,7 @@
     
     .msgUsername.ani,
     .msgReplyAuthor.ani {
-      background: linear-gradient(270deg, #88d094, #4f9f9a, #1c77a4);
+      background: linear-gradient(270deg, var(--accentGreen), var(--accentBlue), var(--accentGreen));
       background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -348,7 +347,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      border: 1px solid rgba(28,119,164,0.35);
+      border: 1px solid color-mix(in srgb, var(--accentBlue) 35%, transparent);
       border-radius: 3px;
       padding: 0px 4px;
       margin-right: 2px;
@@ -376,7 +375,10 @@
     .msgActionButton:focus-visible { opacity: 1; }
     
     .msgReplyButton:hover {
-      background: linear-gradient(135deg, rgba(136, 208, 148, 0.14), rgba(28, 119, 164, 0.14));
+      background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--accentGreen) 14%, transparent), 
+      color-mix(in srgb, var(--accentBlue) 14%, transparent)
+      );
       color: var(--accentBlend);
     }
     
@@ -439,7 +441,7 @@
       border-radius: 4px;
     }
     @keyframes msgHighlightFlash {
-      0%   { background: rgba(28, 119, 164, 0.22); }
+      0%   { background: color-mix(in srgb, var(--accentBlue) 22%, transparent); }
       100% { background: transparent; }
     }
     
@@ -469,7 +471,6 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .converseTextInput:focus { border-color: var(--accentBlend); box-shadow: 0 0 0 3px rgba(136, 208, 148, 0.08), 0 0 12px rgba(28, 119, 164, 0.25); }
     .converseTextInput:disabled { opacity: 0.4; cursor: not-allowed; }
     .converseTextInput::placeholder { color: var(--textMuted); }
     
@@ -488,10 +489,12 @@
     }
     
     .converseSendButton:hover:not(:disabled) {
-      background: linear-gradient(135deg, rgba(136, 208, 148, 0.2), rgba(28, 119, 164, 0.2));
+      background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--accentGreen) 20%, transparent), 
+      color-mix(in srgb, var(--accentBlue) 20%, transparent)
+      );
       border-color: var(--accentBlend);
       color: var(--accentBlend);
-      box-shadow: 0 0 12px rgba(28, 119, 164, 0.2); 
     }
     
     .converseSendButton:disabled {
@@ -578,7 +581,7 @@
       width: 100%;
       padding: 7px 12px;
       background: var(--bgDark);
-      border: 1px solid rgba(28,119,164,0.3);
+      border: 1px solid color-mix(in srgb, var(--accentBlue) 30%, transparent);
       border-radius: var(--radiussm);
       color: var(--textMain);
       font-family: var(--fontMono);
@@ -597,7 +600,7 @@
       cursor: pointer;
       transition: all 0.15s;
       background: transparent;
-      border: 1px solid rgba(28, 119, 164, 0.35);
+      border: 1px solid color-mix(in srgb, var(--accentBlue) 35%, transparent);
       color: var(--accentBlend);
     }
     
@@ -625,8 +628,11 @@
       align-items: center;
       gap: 5px;
       padding: 3px 4px 3px 9px;
-      background: linear-gradient(135deg, rgba(136, 208, 148, 0.12), rgba(28, 119, 164, 0.12));
-      border: 1px solid rgba(28, 119, 164, 0.3);
+      background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--accentGreen) 12%, transparent), 
+      color-mix(in srgb, var(--accentBlue) 12%, transparent)
+      );
+      border: 1px solid color-mix(in srgb, var(--accentBlue) 30%, transparent);
       border-radius: 999px;
       font-family: var(--fontMono);
       font-size: 0.75rem;
@@ -643,7 +649,7 @@
       border-radius: 50%;
       transition: background 0.15s;
     }
-    .privateChipRemove:hover { background: rgba(28, 119, 164, 0.25); }
+    .privateChipRemove:hover { background: color-mix(in srgb, var(--accentBlue) 25%, transparent); }
     
     .converseSidebar {
       display: flex;
@@ -1123,8 +1129,8 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#88d094"/>
-        <stop offset="100%" stop-color="#1c77a4"/>
+        <stop offset="0%" style="stop-color: var(--accentGreen)"/>
+        <stop offset="100%" style="stop-color: var(--accentBlue)"/>
       </linearGradient>
     </defs>
   </svg>
@@ -1135,8 +1141,9 @@
   
   <header class="navHeader">
     <div class="brand">
-      
-      <span>Destiny</span>
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span>Destiny</span>
+      </a>
     </div>
     <ul class="navLinks">
       <li><a href="index.html"><svg style="width:1em;height:1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>

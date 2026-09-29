@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let scramjetInstance = null;
   let globalHistory = JSON.parse(localStorage.getItem("destinyHistory") || "[]");
   
-  const searchString = typeof window.__HAZE_SEARCH__ !== "undefined" ? window.__HAZE_SEARCH__ : window.location.search;
+  const searchString = typeof window.__DESTINY_SEARCH__ !== "undefined" ? window.__DESTINY_SEARCH__ : window.location.search;
   const urlParams = new URLSearchParams(searchString);
   const initialUrl = parseQueryToUrl(urlParams.get("url") || "https://duckduckgo.com");
   

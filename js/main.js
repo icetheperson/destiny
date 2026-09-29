@@ -783,3 +783,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function applyTheme(themeKey) {
+  const validThemes = ["original", "sunrise", "blush", "ocean", "wb", "ruby", "lavender", "banana"];
+  const theme = validThemes.includes(themeKey) ? themeKey : "original";
+  
+  if (theme === "original") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+}
+
+applyTheme(localStorage.getItem("destiny_theme") || "original");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const currentTheme = localStorage.getItem("destiny_theme") || "original";
+  applyTheme(currentTheme);
+
+  const themeCards = document.querySelectorAll(".themeCard");
+  if (themeCards.length > 0) {
+    themeCards.forEach((card) => {
+      const themeId = card.getAttribute("data-theme-id");
+      if (themeId === currentTheme) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+
+      card.addEventListener("click", () => {
+        themeCards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
+        localStorage.setItem("destiny_theme", themeId);
+        applyTheme(themeId);
+      });
+    });
+  }
+});

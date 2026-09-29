@@ -224,7 +224,151 @@ header.navHeader {
 
 .buttonDanger:hover {
   background: #ea8a8a;
-  box-shadow: 0 0 16px rgba(224, 112, 112, 0.35);
+}
+
+svg #brandGrad stop:nth-child(1) {
+  stop-color: var(--accentGreen);
+}
+svg #brandGrad stop:nth-child(2) {
+  stop-color: var(--accentBlue);
+}
+
+[data-theme="sunrise"] {
+  --accentGreen: #ffd166;
+  --accentBlue: #9d4edd;
+  --accentPurple: #ffd166;
+  --accentPurpleLight: #9d4edd;
+  --accentGradient: linear-gradient(135deg, #ffd166, #ff4d6d, #9d4edd);
+  --accentBlend: #ff4d6d;
+}
+
+[data-theme="blush"] {
+  --accentGreen: #f8a5c2;
+  --accentBlue: #ffffff;
+  --accentPurple: #f8a5c2;
+  --accentPurpleLight: #ffffff;
+  --accentGradient: linear-gradient(135deg, #f8a5c2, #ffffff);
+  --accentBlend: #fbc7d4;
+}
+
+[data-theme="ocean"] {
+  --accentGreen: #38b6ff;
+  --accentBlue: #004e92;
+  --accentPurple: #38b6ff;
+  --accentPurpleLight: #004e92;
+  --accentGradient: linear-gradient(135deg, #38b6ff, #004e92);
+  --accentBlend: #1c82c9;
+}
+
+[data-theme="wb"] {
+  --accentGreen: #ffffff;
+  --accentBlue: #333333;
+  --accentPurple: #ffffff;
+  --accentPurpleLight: #333333;
+  --accentGradient: linear-gradient(135deg, #ffffff, #888888, #333333);
+  --accentBlend: #888888;
+}
+
+[data-theme="ruby"] {
+  --accentGreen: #ff5252;
+  --accentBlue: #8b0000;
+  --accentPurple: #ff5252;
+  --accentPurpleLight: #8b0000;
+  --accentGradient: linear-gradient(135deg, #ff5252, #8b0000);
+  --accentBlend: #c42929;
+}
+
+[data-theme="lavender"] {
+  --accentGreen: #d8b4fe;
+  --accentBlue: #512da8;
+  --accentPurple: #d8b4fe;
+  --accentPurpleLight: #512da8;
+  --accentGradient: linear-gradient(135deg, #d8b4fe, #512da8);
+  --accentBlend: #9470d3;
+}
+
+[data-theme="banana"] {
+  --accentGreen: #ffee55;
+  --accentBlue: #d4ac0d;
+  --accentPurple: #ffee55;
+  --accentPurpleLight: #d4ac0d;
+  --accentGradient: linear-gradient(135deg, #ffee55, #d4ac0d);
+  --accentBlend: #f1cb31;
+}
+
+.themeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .themeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.themeCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radiusmd);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  user-select: none;
+}
+
+.themeCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.themeCard.active {
+  border-color: var(--accentGreen);
+  box-shadow: 0 0 0 1px var(--accentGreen);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.themeCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.themeSwatches {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.themeDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.themeCheck {
+  display: none;
+  color: var(--accentGreen);
+}
+
+.themeCard.active .themeCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeCardTitle {
+  font-family: var(--fontMono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--textMain);
 }
 
 .footer {
@@ -356,7 +500,6 @@ h5 {
 .panelCard:hover {
   background: var(--bgPanelHover);
   border-color: var(--accentBlend);
-  box-shadow: 0 8px 24px -12px rgba(136, 208, 148, 0.25), 0 8px 24px -12px rgba(28, 119, 164, 0.3);
   transform: translateY(-2px);
 }
 
@@ -569,7 +712,6 @@ input:checked + .slider:before {
 
 .searchWrap:focus-within {
   border-color: var(--accentBlend);
-  box-shadow: 0 0 0 3px rgba(136, 208, 148, 0.08), 0 0 14px rgba(28, 119, 164, 0.25);
 }
 
 .searchWrap svg {
@@ -616,12 +758,11 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease,
 }
 
 .arcadeCard:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .arcadeCard img {
@@ -692,8 +833,10 @@ input:checked + .slider:before {
 }
 
 .arcadeTopBarBack:hover {
-  background: linear-gradient(135deg, rgba(136, 208, 148, 0.12), rgba(28, 119, 164, 0.12));
-  color: var(--accentBlend);
+    background: linear-gradient(135deg, 
+        color-mix(in srgb, var(--accentGreen) 12%, transparent), 
+        color-mix(in srgb, var(--accentBlue) 12%, transparent)
+    );
 }
 
 .arcadeTopBarBack svg {
@@ -733,7 +876,10 @@ input:checked + .slider:before {
 }
 
 .arcadeIconButton:hover {
-  background: linear-gradient(135deg, rgba(136, 208, 148, 0.14), rgba(28, 119, 164, 0.14));
+    background: linear-gradient(135deg, 
+        color-mix(in srgb, var(--accentGreen) 14%, transparent), 
+        color-mix(in srgb, var(--accentBlue) 14%, transparent)
+    );
 }
 .arcadeIconButton:hover svg {
   fill: url(#brandGrad);
@@ -873,7 +1019,7 @@ input:checked + .slider:before {
   max-width: 100%; 
   padding: 18px 24px;
   border-radius: var(--radiuslg);
-  background: linear-gradient(135deg, rgba(136, 208, 148, 0.08), rgba(28, 119, 164, 0.08));
+  background: var(--bgPanel);
   backdrop-filter: blur(12px);
 }
 
@@ -1010,7 +1156,7 @@ input:checked + .slider:before {
   font-size: 1.05rem;
   letter-spacing: 0.5px;
   background-color: rgba(255, 255, 255, 0.04);
-  background-image: linear-gradient(135deg, rgba(136, 208, 148, 0.08), rgba(28, 119, 164, 0.08));
+  background-image: linear-gradient(135deg, color-mix(in srgb, var(--accentGreen) 8%, transparent), color-mix(in srgb, var(--accentBlue) 8%, transparent));
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 14px;

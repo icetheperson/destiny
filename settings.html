@@ -31,7 +31,9 @@
   
   <header class="nav-header">
     <div class="brand">
-      <span>Destiny</span>
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span>Destiny</span>
+      </a>
     </div>
     <ul class="navLinks">
       <li><a href="index.html"><svg style="width: 1em; height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg> <span class="navLabel">Home</span></a></li>
@@ -124,6 +126,121 @@
         <div style="display: flex; gap: 10px; align-items: center;">
           <input type="text" id="wispUrlInput" placeholder="wss://arctic.lat/_q/" style="padding: 8px 12px; background: rgba(23, 26, 45, 0.95); color: #f1f1f6; border: 1px solid rgba(157, 161, 188, 0.2); border-radius: 5px; outline: none; width: 220px;">
           <button id="saveWispButton" class="button buttonPrimary saveUrlButton">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tableContainer">
+      <div style="margin-bottom: 20px;">
+        <h3 style="color: #f1f1f6; font-size: 1.1rem; font-weight: normal; margin-bottom: 6px;">Theme</h3>
+        <p style="color: var(--textMuted); font-family: var(--fontMono); font-size: 0.85rem;">Pick a color palette for the site.</p>
+      </div>
+      
+      <div class="themeGrid" id="themeGrid">
+        <div class="themeCard" data-theme-id="original">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #88d094;"></span>
+              <span class="themeDot" style="background: #1c77a4;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Original</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="sunrise">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #ffd166;"></span>
+              <span class="themeDot" style="background: #ff4d6d;"></span>
+              <span class="themeDot" style="background: #9d4edd;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Sunrise</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="blush">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #f8a5c2;"></span>
+              <span class="themeDot" style="background: #ffffff;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Blush</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="ocean">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #38b6ff;"></span>
+              <span class="themeDot" style="background: #004e92;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Ocean</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="wb">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #ffffff;"></span>
+              <span class="themeDot" style="background: #888888;"></span>
+              <span class="themeDot" style="background: #333333;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">W&B</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="ruby">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #ff5252;"></span>
+              <span class="themeDot" style="background: #8b0000;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Ruby</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="lavender">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #d8b4fe;"></span>
+              <span class="themeDot" style="background: #512da8;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Lavender</div>
+        </div>
+
+        <div class="themeCard" data-theme-id="banana">
+          <div class="themeCardTop">
+            <div class="themeSwatches">
+              <span class="themeDot" style="background: #ffee55;"></span>
+              <span class="themeDot" style="background: #d4ac0d;"></span>
+            </div>
+            <div class="themeCheck">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="themeCardTitle">Banana</div>
         </div>
       </div>
     </section>
